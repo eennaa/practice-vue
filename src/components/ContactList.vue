@@ -6,10 +6,12 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'ContactList',
+  
 }
 </script>
 
+
+export const test = function() {
+  ...
+}
