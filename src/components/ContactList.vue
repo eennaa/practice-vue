@@ -1,7 +1,15 @@
 <template>
   <div class="hello">
     <h1>Contact List</h1>
-    <table>
+    <form @submit.prevent>
+      <label>Name</label>
+      <input v-model="newContact.name" type="text" placeholed="name"> <br>
+      <label>Email</label>
+      <input v-model="newContact.email" type="text" placeholed="email"> <br>
+      <button @click="addContact" type="submit">Add Contact</button> 
+    </form> <br>
+
+    <table border=1 align="center">
       <thead>
         <th>Name</th>
         <th>Email</th>
@@ -21,6 +29,7 @@ export default {
   name: 'ContactList',
   data(){
     return {
+      newContact: {},
       contacts: [
         {name: "John", email: "example@mail.com"},
         {name: "Jack", email: "example2@mail.com"},
@@ -29,6 +38,13 @@ export default {
                 
       ]
     };
+  },
+  methods: {
+    addContact (){
+      console.log(this.newContact);
+      this.contacts.push(this.newContact);
+      this.newContact = {}    
+    }
   }
   
 }
