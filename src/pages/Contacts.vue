@@ -1,15 +1,22 @@
 <template>
   <div>
     <h3>Contacts</h3>
-    <h1></h1>
+    <ContactListProps :contactList="contacts"/>
+    <ContactDetails :contact="contact"/>
+    
     <button class="btn btn-danger" @click="redButton()">Red button</button>
     <router-link class="btn btn-success" to="add-contact"> Go to Add Contacts</router-link>
   </div>
 </template>
 
 <script>
+import ContactListProps from '../components/ContactListProps.vue'
+import ContactDetails from '../components/ContactDetails.vue'
 export default {
-  name: 'HelloWorld',
+  components:{
+    ContactListProps,
+    ContactDetails
+  },
 
   data(){
     return {
@@ -18,7 +25,7 @@ export default {
          { id: 2, name: 'Pera Peric', email: 'peraperic@example.com', number: '555-54321' },
          { id: 3, name: 'Nenad Vujicic', email: 'nenad.v@example.com', number: '555-67890' }
        ]
-    }
+    };
   },
  
  methods: {
@@ -26,7 +33,21 @@ export default {
      console.log("hi");
    }
 
+ },
+
+ computed:{
+   contact(){
+     let routeParam = this.$route.params.id;
+     return this.contacts.find(contact => contact.id === routeParam);
+    //  let returnContact = {};
+    //  this.contacts.forEach(contact=> {
+    //    if(contact.id === routeParam ){
+    //      return returnContact;
+       }
+    //  })
+    //  console.log(this.$toute.params.id);
+   }
  }
-}
+// }
 </script>
 

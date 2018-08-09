@@ -39,10 +39,10 @@ export default {
     return {
       newContact: {},
       contacts: [
-        {name: "John", email: "example@mail.com"},
-        {name: "Jack", email: "example2@mail.com"},
-        {name: "Susan", email: "example3@mail.com"},
-        {name: "Jasmin", email: "example4@mail.com"},
+        // {name: "John", email: "example@mail.com"},
+        // {name: "Jack", email: "example2@mail.com"},
+        // {name: "Susan", email: "example3@mail.com"},
+        // {name: "Jasmin", email: "example4@mail.com"},
                 
       ],
   

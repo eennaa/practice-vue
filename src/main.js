@@ -8,7 +8,9 @@ Vue.use(VueRouter); // dodala nakon npm install vue-router
 Vue.config.productionTip = false
 
 const routes = [
-  {path:"/", component: Contacts},
+  {path:"/", redirect: 'contacts'},
+  {path:"/contacts", component: Contacts},
+  {path:"/contacts/:id", component: Contacts, name: 'contact-details'},
   {path: "/add-contact", component: AddContact}
   // {path: "/add-contact/:id", component: AddContact}
 ];       //dodala
