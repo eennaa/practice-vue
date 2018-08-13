@@ -2,9 +2,9 @@
   <div>
     <h3>Contacts</h3>
     <ContactListProps :contactList="contacts"/>
-    <ContactDetails :contact="contact"/>
+    <ContactDetails v-for="contact in contacts" :key="contact.id" :contact="contact"/>
     
-    <button class="btn btn-danger" @click="redButton()">Red button</button>
+    <button class="btn btn-danger" @click="redButton()">  Red button</button>
     <router-link class="btn btn-success" to="add-contact"> Go to Add Contacts</router-link>
   </div>
 </template>
@@ -12,6 +12,8 @@
 <script>
 import ContactListProps from '../components/ContactListProps.vue'
 import ContactDetails from '../components/ContactDetails.vue'
+import { contacts } from './../services/Contacts.js'
+
 export default {
   components:{
     ContactListProps,
@@ -20,17 +22,23 @@ export default {
 
   data(){
     return {
-      contacts: [
-         { id: 1, name: 'John Doe', email: 'johndoe@example.com', number: '555-12345' },
-         { id: 2, name: 'Pera Peric', email: 'peraperic@example.com', number: '555-54321' },
-         { id: 3, name: 'Nenad Vujicic', email: 'nenad.v@example.com', number: '555-67890' }
-       ]
-    };
+      contacts: []
+    }
+  },
+
+  beforeRouteEnter(to, from, next) {
+    contacts
+    .getAll()
+    .then(response=> {
+      next (vm=> {
+       vm.contacts = response.data
+       })
+    })
+    .catch(err =>console.log(err))    
   },
  
  methods: {
    redButton(){
-     console.log("hi");
    }
 
  },
@@ -45,7 +53,7 @@ export default {
     //      return returnContact;
        }
     //  })
-    //  console.log(this.$toute.params.id);
+    
    }
  }
 // }

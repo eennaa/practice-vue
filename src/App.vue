@@ -32,7 +32,6 @@ export default {
 
   methods: {
     parentMethod(value){
-      console.log(value);
     }
   }
 }

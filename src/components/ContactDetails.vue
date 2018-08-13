@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <!-- {{ contact }} -->
-    <!-- <h3>TEST</h3> -->
-    <table>
+  <div>    
+    <table border="true">
       <thead>
-        <th>Name</th>
+        <th>First name</th>
+        <th>Last name</th>
         <th>Email</th>
       </thead>
       <tbody>
-        <td> {{contact.name}} </td>
+        <td> {{contact.first_name}}  </td>
+        <td> {{contact.last_name}}</td>
         <td> {{contact.email}} </td>
       </tbody>
     </table>
@@ -17,6 +17,12 @@
 
 <script>
 export default {
-  props: ['contact']
+  props: ['contact'],
+  
+  // methods: {
+  //   getContact(id){
+  //     this.contact = Contacts.find(this.id);
+  //   }
+  // }
 }
 </script>
